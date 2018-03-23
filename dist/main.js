@@ -174,8 +174,9 @@ var Identicon = function (_Component) {
       var color = opts.color || createColor();
       var bgcolor = opts.bgColor || createColor();
       var spotcolor = opts.spotColor || createColor();
+      var sizeScale = opts.sizeScale || 1;
       var imageData = createImageData(size);
-      var canvas = setCanvas(this.identicon, imageData, color, scale, bgcolor, spotcolor);
+      var canvas = setCanvas(this.identicon, imageData, color, scale, bgcolor, spotcolor, sizeScale);
 
       return canvas;
     }
