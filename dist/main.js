@@ -135,15 +135,19 @@ var Identicon = function (_Component) {
         return data;
       }
 
-      function setCanvas(identicon, imageData, color, scale, bgcolor, spotcolor, sizeScale) {
+      function setCanvas(identicon, imageData, color, scale, bgcolor, spotcolor, sizeScale, borderRadius, marginLeft) {
         var width = Math.sqrt(imageData.length);
         var size = width * scale;
 
-        identicon.width = size / sizeScale;
+        identicon.width = size;
         identicon.style.width = size / sizeScale + 'px';
 
-        identicon.height = size / sizeScale;
+        identicon.height = size;
         identicon.style.height = size / sizeScale + 'px';
+
+        identicon.style.borderRadius = borderRadius + 'px';
+
+        identicon.style.marginLeft = marginLeft + 'px';
 
         var cc = identicon.getContext('2d');
         cc.fillStyle = bgcolor;
@@ -175,8 +179,10 @@ var Identicon = function (_Component) {
       var bgcolor = opts.bgColor || createColor();
       var spotcolor = opts.spotColor || createColor();
       var sizeScale = opts.sizeScale || 1;
+      var borderRadius = opts.borderRadius || 0;
+      var marginLeft = opts.marginLeft || 0;
       var imageData = createImageData(size);
-      var canvas = setCanvas(this.identicon, imageData, color, scale, bgcolor, spotcolor, sizeScale);
+      var canvas = setCanvas(this.identicon, imageData, color, scale, bgcolor, spotcolor, sizeScale, borderRadius, marginLeft);
 
       return canvas;
     }
