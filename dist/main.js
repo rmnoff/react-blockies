@@ -135,15 +135,15 @@ var Identicon = function (_Component) {
         return data;
       }
 
-      function setCanvas(identicon, imageData, color, scale, bgcolor, spotcolor) {
+      function setCanvas(identicon, imageData, color, scale, bgcolor, spotcolor, sizeScale) {
         var width = Math.sqrt(imageData.length);
         var size = width * scale;
 
-        identicon.width = size;
-        identicon.style.width = size + 'px';
+        identicon.width = size / sizeScale;
+        identicon.style.width = size / sizeScale + 'px';
 
-        identicon.height = size;
-        identicon.style.height = size + 'px';
+        identicon.height = size / sizeScale;
+        identicon.style.height = size / sizeScale + 'px';
 
         var cc = identicon.getContext('2d');
         cc.fillStyle = bgcolor;
@@ -207,4 +207,3 @@ Identicon.propTypes = {
   bgColor: _propTypes2.default.string,
   spotColor: _propTypes2.default.string
 };
-
